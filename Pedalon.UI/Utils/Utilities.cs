@@ -100,5 +100,21 @@ namespace Pedalon.UI.Utils
                 return null;
             }
         }
+
+        public static double Ondalik(object val = null)
+        {
+            double v = 0;
+            if (val != null)
+                double.TryParse(val.ToString(), out v);
+            return v;
+        }
+
+        public static int Tamsayi(object val = null)
+        {
+            int v = 0;
+            if (val != null)
+                int.TryParse(val.ToString(), out v);
+            return v;
+        }
     }
 }

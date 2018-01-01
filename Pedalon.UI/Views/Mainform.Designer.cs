@@ -46,6 +46,9 @@ namespace Pedalon.UI.Views
             this.btnDestinations = new DevExpress.XtraBars.BarButtonItem();
             this.btnActList = new DevExpress.XtraBars.BarButtonItem();
             this.btnFeeStatus = new DevExpress.XtraBars.BarButtonItem();
+            this.btnGetMemberList = new DevExpress.XtraBars.BarButtonItem();
+            this.btnGetFeeList = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMemberForm = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgMemberRecords = new Pedalon.UI.UserControls.CustomRecordTools();
             this.rpgMemberExTools = new Pedalon.UI.UserControls.CustomExportTools();
@@ -67,6 +70,8 @@ namespace Pedalon.UI.Views
             this.rpgTodoRecs = new Pedalon.UI.UserControls.CustomRecordTools();
             this.rpgTodoExTools = new Pedalon.UI.UserControls.CustomExportTools();
             this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.recordTools = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -80,9 +85,6 @@ namespace Pedalon.UI.Views
             this.toolsPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.placesPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnGetMemberList = new DevExpress.XtraBars.BarButtonItem();
-            this.btnGetFeeList = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.anamenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.content)).BeginInit();
             this.content.SuspendLayout();
@@ -107,9 +109,10 @@ namespace Pedalon.UI.Views
             this.btnActList,
             this.btnFeeStatus,
             this.btnGetMemberList,
-            this.btnGetFeeList});
+            this.btnGetFeeList,
+            this.btnMemberForm});
             this.anamenu.Location = new System.Drawing.Point(0, 0);
-            this.anamenu.MaxItemId = 16;
+            this.anamenu.MaxItemId = 17;
             this.anamenu.Name = "anamenu";
             this.anamenu.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -233,6 +236,35 @@ namespace Pedalon.UI.Views
             this.btnFeeStatus.Name = "btnFeeStatus";
             this.btnFeeStatus.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnFeeStatus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFeeStatus_ItemClick);
+            // 
+            // btnGetMemberList
+            // 
+            this.btnGetMemberList.Caption = "Üye Listesini Al";
+            this.btnGetMemberList.Glyph = ((System.Drawing.Image)(resources.GetObject("btnGetMemberList.Glyph")));
+            this.btnGetMemberList.Id = 14;
+            this.btnGetMemberList.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnGetMemberList.LargeGlyph")));
+            this.btnGetMemberList.Name = "btnGetMemberList";
+            this.btnGetMemberList.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnGetMemberList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGetMemberList_ItemClick);
+            // 
+            // btnGetFeeList
+            // 
+            this.btnGetFeeList.Caption = "Aidat Listesini Al";
+            this.btnGetFeeList.Glyph = ((System.Drawing.Image)(resources.GetObject("btnGetFeeList.Glyph")));
+            this.btnGetFeeList.Id = 15;
+            this.btnGetFeeList.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnGetFeeList.LargeGlyph")));
+            this.btnGetFeeList.Name = "btnGetFeeList";
+            this.btnGetFeeList.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnGetFeeList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGetFeeList_ItemClick);
+            // 
+            // btnMemberForm
+            // 
+            this.btnMemberForm.Caption = "Üye Kayıt Formu";
+            this.btnMemberForm.Glyph = ((System.Drawing.Image)(resources.GetObject("btnMemberForm.Glyph")));
+            this.btnMemberForm.Id = 16;
+            this.btnMemberForm.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnMemberForm.LargeGlyph")));
+            this.btnMemberForm.Name = "btnMemberForm";
+            this.btnMemberForm.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMemberForm_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -404,11 +436,26 @@ namespace Pedalon.UI.Views
             // ribbonPage7
             // 
             this.ribbonPage7.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup4});
             this.ribbonPage7.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage7.Image")));
             this.ribbonPage7.Name = "ribbonPage7";
             this.ribbonPage7.Tag = "tools";
             this.ribbonPage7.Text = "Araçlar";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.AllowTextClipping = false;
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnGetMemberList);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnGetFeeList);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Veri Transferi";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnMemberForm);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "Dernek İşlemleri";
             // 
             // ribbonStatusBar1
             // 
@@ -505,34 +552,6 @@ namespace Pedalon.UI.Views
             // 
             this.memberBindingSource.DataSource = typeof(Pedalon.UI.Models.Member);
             // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.AllowTextClipping = false;
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnGetMemberList);
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnGetFeeList);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Veri Transferi";
-            // 
-            // btnGetMemberList
-            // 
-            this.btnGetMemberList.Caption = "Üye Listesini Al";
-            this.btnGetMemberList.Glyph = ((System.Drawing.Image)(resources.GetObject("btnGetMemberList.Glyph")));
-            this.btnGetMemberList.Id = 14;
-            this.btnGetMemberList.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnGetMemberList.LargeGlyph")));
-            this.btnGetMemberList.Name = "btnGetMemberList";
-            this.btnGetMemberList.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnGetMemberList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGetMemberList_ItemClick);
-            // 
-            // btnGetFeeList
-            // 
-            this.btnGetFeeList.Caption = "Aidat Listesini Al";
-            this.btnGetFeeList.Glyph = ((System.Drawing.Image)(resources.GetObject("btnGetFeeList.Glyph")));
-            this.btnGetFeeList.Id = 15;
-            this.btnGetFeeList.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnGetFeeList.LargeGlyph")));
-            this.btnGetFeeList.Name = "btnGetFeeList";
-            this.btnGetFeeList.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnGetFeeList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGetFeeList_ItemClick);
-            // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -613,5 +632,7 @@ namespace Pedalon.UI.Views
         private DevExpress.XtraBars.BarButtonItem btnGetMemberList;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem btnGetFeeList;
+        private DevExpress.XtraBars.BarButtonItem btnMemberForm;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
     }
 }

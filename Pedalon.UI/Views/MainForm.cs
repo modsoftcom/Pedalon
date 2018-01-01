@@ -82,16 +82,14 @@ namespace Pedalon.UI.Views
             MemberForm memberDialog = new MemberForm();
             if (memberDialog.ShowDialog() == DialogResult.OK && memberDialog.Member != null)
             {
-                List<Bike> bikes = new List<Bike>();
-                foreach (Bike bike in memberDialog.Member.Bikes)
-                {
-                    long id = Service<Bike>.AddOrUpdate(bike);
-                    bike.Id = id;
-                    bikes.Add(bike);
-                }
-                memberDialog.Member.Bikes = bikes;
+                memberDialog.Member.Bikes = memberDialog.Bikes;
                 Service<Member>.AddOrUpdate(memberDialog.Member);
 
+                memberList.bindingSource.DataSource = Service<Member>.toBindingList;
+                memberList.items.BestFitColumns();
+            }
+            else
+            {
                 memberList.bindingSource.DataSource = Service<Member>.toBindingList;
                 memberList.items.BestFitColumns();
             }
@@ -106,16 +104,13 @@ namespace Pedalon.UI.Views
                 MemberForm memberDialog = new MemberForm(entity);
                 if (memberDialog.ShowDialog() == DialogResult.OK && memberDialog.Member != null)
                 {
-                    List<Bike> bikes = new List<Bike>();
-                    foreach (Bike bike in memberDialog.Member.Bikes)
-                    {
-                        long id = Service<Bike>.AddOrUpdate(bike);
-                        bike.Id = id;
-                        bikes.Add(bike);
-                    }
-                    memberDialog.Member.Bikes = bikes;
+                    memberDialog.Member.Bikes = memberDialog.Bikes;
                     Service<Member>.AddOrUpdate(memberDialog.Member);
 
+                    memberList.bindingSource.DataSource = Service<Member>.toBindingList;
+                    memberList.items.BestFitColumns();
+                }else
+                {
                     memberList.bindingSource.DataSource = Service<Member>.toBindingList;
                     memberList.items.BestFitColumns();
                 }
@@ -238,6 +233,10 @@ namespace Pedalon.UI.Views
                 ActForm actDialog = new ActForm(entity);
                 if (actDialog.ShowDialog() == DialogResult.OK && actDialog.Act != null)
                 {
+                    actDialog.Act.Destinations = actDialog.Destinations;
+                    actDialog.Act.Planners = actDialog.Planners;
+                    actDialog.Act.Joiners = actDialog.Joiners;
+
                     Service<Act>.AddOrUpdate(actDialog.Act);
 
                     actList.bindingSource.DataSource = Service<Act>.toBindingList;
@@ -320,6 +319,16 @@ namespace Pedalon.UI.Views
             string fname = Utilities.OpenFile();
             if (fname != null)
                 DataGenerator.GetFees(fname);
+        }
+
+        private void btnMemberForm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MemberForm dialog = new MemberForm();
+            if(dialog.ShowDialog() == DialogResult.OK && dialog.Member != null)
+            {
+                FormViewer viewer = new FormViewer(dialog.Member);
+                viewer.Show();
+            }
         }
     }
 }

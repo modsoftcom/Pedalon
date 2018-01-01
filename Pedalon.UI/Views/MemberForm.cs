@@ -15,10 +15,12 @@ namespace Pedalon.UI.Views
     public partial class MemberForm : DevExpress.XtraEditors.XtraForm
     {
         public Member Member;
+        public List<Bike> Bikes;
         public MemberForm()
         {
             InitializeComponent();
             Member = new Member();
+            Bikes = new List<Bike>();
         }
         public MemberForm(Member member, bool read = false)
         {
@@ -63,13 +65,14 @@ namespace Pedalon.UI.Views
             txtBikeSerial.ReadOnly = read;
             txtBikeColor.ReadOnly = read;
             bikeList.Enabled = !read;
+            Bikes = member.Bikes;
             if (read)
             {
                 btnSave.Text = "TAMAM";
             }
 
             bikeList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            foreach (Bike bike in Member.Bikes)
+            foreach (Bike bike in Bikes)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = bike.Brand;
@@ -112,7 +115,7 @@ namespace Pedalon.UI.Views
             item.SubItems.Add(bike.Model = txtBikeModel.Text);
             item.SubItems.Add(bike.Serial = txtBikeSerial.Text);
             item.SubItems.Add((bike.Color = txtBikeColor.Color.ToArgb()).ToString());
-            Member.Bikes.Add(bike);
+            Bikes.Add(bike);
             item.Tag = bike;
             bikeList.Items.Add(item);
             txtBikeBrand.Text = "";
@@ -130,7 +133,7 @@ namespace Pedalon.UI.Views
             txtBikeModel.Text = bike.Model;
             txtBikeSerial.Text = bike.Serial;
             txtBikeColor.Color = Color.FromArgb(bike.Color);
-            Member.Bikes.Remove(bike);
+            Bikes.Remove(bike);
             bikeList.SelectedItems[0].Remove();
             if (bikeList.Items.Count > 0)
                 bikeList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
