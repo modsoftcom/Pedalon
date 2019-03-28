@@ -43,8 +43,15 @@ namespace Pedalon.UI
                 CheckFiles();
 
                 //LoginForm login = new LoginForm();
-                //if (login.ShowDialog() == DialogResult.OK)
+                if (DateTime.Now.Ticks < 636899328000000000)
+                {
+                    MessageBox.Show("Bu demo sürümün geçerlilik tarihi 4 Nisan 2019 tarihine kadardır.", "Bilgilendirme");
                     Application.Run(new MainForm());
+                }
+                else
+                {
+                    MessageBox.Show("Programın demo süresi dolmuştur.");
+                }
             }
             catch (Exception ex)
             {
